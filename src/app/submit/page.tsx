@@ -1,10 +1,11 @@
 import SubmitForm from "@/components/SubmitForm/SubmitForm";
+import UploadPDF from "@/components/SubmitForm/UploadPDF";
 import React from "react";
 
 const Scan = () => {
     return (
         <>
-            <SubmitForm></SubmitForm>
+            <UploadPDF></UploadPDF>
         </>
     );
 };
