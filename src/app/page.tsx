@@ -6,7 +6,7 @@ export default function Home() {
             <nav>
                 <ul>
                     <li>
-                        <Link href="/scan">Go to Scan Page</Link>
+                        <Link href="/submit">Go to Submit Page</Link>
                     </li>
                     <li>
                         <Link href="/score">Go to Score Page</Link>
