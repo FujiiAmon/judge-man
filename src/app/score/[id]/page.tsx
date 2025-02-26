@@ -1,23 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import useFetchPersonalData from "@/utils/useFetchPersonalData";
+import React from "react";
 
-const Personal = ({ params }: { params: { id: string } }) => {
-    const { id } = params;
-    const [userName, setUserName] = useState<string | null>(null);
-
-    useEffect(() => {
-        fetch("/data.json")
-            .then((response) => response.json())
-            .then((data) => {
-                const user = data.users.find(
-                    (user: { id: number }) => user.id === parseInt(id)
-                );
-                if (user) {
-                    setUserName(user.name);
-                }
-            });
-    }, [id]);
+const PersonalPage = ({ params }: { params: { id: string } }) => {
+    const id = params.id;
+    const { userName } = useFetchPersonalData(id);
 
     return (
         <div>
@@ -27,4 +15,4 @@ const Personal = ({ params }: { params: { id: string } }) => {
     );
 };
 
-export default Personal;
+export default PersonalPage;

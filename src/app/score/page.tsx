@@ -1,44 +1,15 @@
 "use client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Factor, Score, User } from "@/types/type_entry";
+import useFetchData from "@/utils/useFetchData";
 
-const Score = () => {
-    interface User {
-        id: number;
-        name: string;
-        score: number;
-    }
-    interface Factor {
-        id: number;
-        name: string;
-        weight: number;
-    }
-
-    interface Score {
-        user_id: number;
-        factor_id: number;
-        score: number;
-    }
-
-    interface Data {
-        users: User[];
-        factors: Factor[];
-        scores: Score[];
-    }
-
-    const [data, setData] = useState<Data | null>(null);
-
-    useEffect(() => {
-        fetch("/data.json")
-            .then((response) => response.json())
-            .then((data) => setData(data));
-    }, []);
+const ScorePage = () => {
+    const { data } = useFetchData();
 
     const users: User[] = data?.users ?? [];
     const factors: Factor[] = data?.factors ?? [];
     const scores: Score[] = data?.scores ?? [];
-
-    // console.log(users);
 
     return (
         <>
@@ -91,4 +62,4 @@ const Score = () => {
     );
 };
 
-export default Score;
+export default ScorePage;
