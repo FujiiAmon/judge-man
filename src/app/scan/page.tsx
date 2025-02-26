@@ -30,7 +30,16 @@ const Scan = () => {
             <p>Drag & Drop PDF files here</p>
             <ul>
                 {files.map((file, index) => (
-                    <li key={index}>{file.name}</li>
+                    <li key={index}>
+                        {file.name}
+                        <object
+                            data={URL.createObjectURL(file)}
+                            type="application/pdf"
+                            width="100%"
+                            height="500px">
+                            <p>PDF cannot be displayed</p>
+                        </object>
+                    </li>
                 ))}
             </ul>
         </div>
