@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import { Factor, Score, User } from "@/types/type_entry";
-import useFetchData from "@/utils/useFetchData";
+import useFetchData from "@/hooks/useFetchData";
 
 const ScorePage = () => {
     const { data } = useFetchData();

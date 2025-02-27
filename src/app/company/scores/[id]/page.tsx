@@ -1,6 +1,6 @@
 "use client";
 
-import useFetchPersonalData from "@/utils/useFetchPersonalData";
+import useFetchPersonalData from "@/hooks/useFetchPersonalData";
 import React, { useEffect, useState } from "react";
 
 const PersonalPage = ({ params }: { params: Promise<{ id: string }> }) => {
