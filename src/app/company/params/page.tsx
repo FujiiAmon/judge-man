@@ -2,9 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import { Factor } from "@/types/type_company";
+import { useRouter } from "next/navigation";
 
 const ParamPage = () => {
     const [factors, setFactors] = useState<Factor[]>([]);
+    const router = useRouter();
 
     useEffect(() => {
         async function fetchData() {
@@ -27,6 +29,22 @@ const ParamPage = () => {
                 factor.id === id ? { ...factor, [field]: value } : factor
             )
         );
+    };
+
+    const hangleUpdate = async () => {
+        try {
+            const res = await fetch(`http://localhost:3000/api/company`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(factors),
+            });
+            const data = await res.json();
+            console.log(data);
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (
@@ -83,12 +101,16 @@ const ParamPage = () => {
             ))}
             <div className="flex space-x-4 mt-4">
                 <button
-                    onClick={() => console.log("Updated factors:", factors)}
+                    onClick={() => {
+                        hangleUpdate();
+                    }}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md">
                     更新する
                 </button>
                 <button
-                    onClick={() => console.log("戻る")}
+                    onClick={() => {
+                        router.push("/company");
+                    }}
                     className="px-4 py-2 bg-gray-500 text-white rounded-md">
                     戻る
                 </button>
