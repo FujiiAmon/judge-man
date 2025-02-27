@@ -31,7 +31,7 @@ const PersonalPage = ({ params }: { params: Promise<{ id: string }> }) => {
             <h1>User Details</h1>
             {userName ? <p>Name: {userName}</p> : <p>User not found</p>}
             <div>
-                {dialog.split("/").map((text, index) => (
+                {dialog.split("|").map((text, index) => (
                     <React.Fragment key={`M-${index}`}>
                         {index % 2 === 0 ? (
                             <div className="flex items-center mb-2.5">

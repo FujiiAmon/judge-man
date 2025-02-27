@@ -1,9 +1,9 @@
 import SettingButton from "@/components/SettingButton";
 import React from "react";
 
-const CompanyLayout: React.FC<{ children: React.ReactNode }> = ({
+export default function CompanyLayout({
     children,
-}) => {
+}: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
             <body>
@@ -14,6 +14,4 @@ const CompanyLayout: React.FC<{ children: React.ReactNode }> = ({
             </body>
         </html>
     );
-};
-
-export default CompanyLayout;
+}

@@ -34,7 +34,7 @@ const ScorePage = () => {
                         {users.map((user) => (
                             <tr key={user.id}>
                                 <td className="border border-gray-300 p-2 text-center">
-                                    <Link href={`/score/${user.id}`}>
+                                    <Link href={`company/scores/${user.id}`}>
                                         {user.name}
                                     </Link>
                                 </td>
