@@ -1,10 +1,12 @@
 "use client";
 
+import { FormDataProps } from "@/types/type_form";
 import React, { useState } from "react";
 
-const InputArea = () => {
+const InputNameArea: React.FC<FormDataProps> = (FormData) => {
     const [name, setName] = useState("");
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        FormData.FormData.append("name", e.target.value);
         setName(e.target.value);
     };
 
@@ -23,4 +25,4 @@ const InputArea = () => {
     );
 };
 
-export default InputArea;
+export default InputNameArea;
