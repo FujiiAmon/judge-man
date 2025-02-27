@@ -23,7 +23,11 @@ const ParamPage = () => {
         // console.log("factors:", factors);
     }, []);
 
-    const handleChange = (id: number, field: string, value: any) => {
+    const handleChange = (
+        id: number,
+        field: string,
+        value: string | number
+    ) => {
         setFactors((prevFactors) =>
             prevFactors.map((factor) =>
                 factor.id === id ? { ...factor, [field]: value } : factor
