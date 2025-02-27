@@ -19,7 +19,7 @@ const PdfUpload = () => {
         }
     };
 
-    const handleUpload = async () => {
+    const handleUpload = async (e: React.FormEvent) => {
         if (!name || !file) {
             setError("名前とPDFファイルを選択してください");
             return;
@@ -29,37 +29,28 @@ const PdfUpload = () => {
         setError(null);
 
         const formData = new FormData();
-        formData.append("name", name); // `name` を `FormData` で送信
+        formData.append("name", name);
         formData.append("file", file);
-        const baseUrl =
-            "https://handles-organised-elephant-involves.trycloudflare.com/";
-
-        try {
-            const response = await fetch(`${baseUrl}upload_pdf_and_save_user`, {
-                method: "POST",
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error("アップロードに失敗しました");
+        const apiUrl = "http://localhost:3000/api/up_user";
+        const onSubmitHandler = async (e: React.FormEvent) => {
+            e.preventDefault();
+            formData.get("name");
+            formData.get("file");
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "POST",
+                    body: formData,
+                });
+                const data = await response.json();
+                setPdfUrl(data.pdfUrl);
+            } catch (error) {
+                setError("アップロードに失敗しました" + error);
+            } finally {
+                setLoading(false);
             }
+        };
 
-            const data = await response.json();
-
-            if (!baseUrl) {
-                throw new Error("BaseURL が設定されていません");
-            }
-
-            const pdfUrl = `${baseUrl}${data.pdf_url}`;
-
-            setPdfUrl(pdfUrl); // PDF URL を状態に設定
-        } catch (err) {
-            setError(
-                err instanceof Error ? err.message : "エラーが発生しました"
-            );
-        } finally {
-            setLoading(false);
-        }
+        onSubmitHandler(e);
     };
 
     return (
