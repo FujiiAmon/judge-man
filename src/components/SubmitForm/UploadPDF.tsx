@@ -32,7 +32,7 @@ const PdfUpload = () => {
         formData.append("name", name); // `name` を `FormData` で送信
         formData.append("file", file);
         const baseUrl =
-            "https://combinations-expansion-contribute-cuba.trycloudflare.com/";
+            "https://handles-organised-elephant-involves.trycloudflare.com/";
 
         try {
             const response = await fetch(`${baseUrl}upload_pdf_and_save_user`, {
