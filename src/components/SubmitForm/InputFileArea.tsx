@@ -18,7 +18,7 @@ const InputFileArea: React.FC<FormDataProps> = ({ FormData }) => {
                 onChange={handleFileChange}
                 className="mb-4 p-2 border border-gray-300 rounded-md"
             />
-            {FormData.get("file") && (
+            {/* {FormData.get("file") && (
                 <div>
                     <div className="w-full h-64 flex items-center justify-center">
                         <p className="text-gray-500">Loading...</p>
@@ -34,7 +34,7 @@ const InputFileArea: React.FC<FormDataProps> = ({ FormData }) => {
                         </p>
                     </object>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };

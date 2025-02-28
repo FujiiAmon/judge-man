@@ -1,0 +1,49 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "name": "",
+            "log": "",
+            "pdf_url": "",
+            "urls": "",
+            "total_score": 0,
+            "scores": [
+                {
+                    "factor_id": 1,
+                    "factor_name": "New Factor",
+                    "factor_weight": 0,
+                    "score": 0,
+                    "reason": ""
+                },
+                {
+                    "factor_id": 2,
+                    "factor_name": "New Factor",
+                    "factor_weight": 0,
+                    "score": 0,
+                    "reason": ""
+                },
+                {
+                    "factor_id": 3,
+                    "factor_name": "New Factor",
+                    "factor_weight": 0,
+                    "score": 0,
+                    "reason": ""
+                },
+                {
+                    "factor_id": 4,
+                    "factor_name": "New Factor",
+                    "factor_weight": 0,
+                    "score": 0,
+                    "reason": ""
+                },
+                {
+                    "factor_id": 5,
+                    "factor_name": "New Factor",
+                    "factor_weight": 0,
+                    "score": 0,
+                    "reason": ""
+                }
+            ]
+        }
+    ]
+}

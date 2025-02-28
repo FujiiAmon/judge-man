@@ -4,10 +4,10 @@ import { FormDataProps } from "@/types/type_form";
 import React, { useState } from "react";
 
 const InputNameArea: React.FC<FormDataProps> = (FormData) => {
-    const [name, setName] = useState("");
+    const [name, setName] = useState<string>("");
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        FormData.FormData.append("name", e.target.value);
         setName(e.target.value);
+        FormData.FormData.append("name", e.target.value);
     };
 
     return (
