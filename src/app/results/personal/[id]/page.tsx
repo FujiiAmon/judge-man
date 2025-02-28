@@ -3,30 +3,32 @@
 import { Result } from "@/types/type_results";
 import React, { useEffect, useState } from "react";
 
-const PersonalPage = ({ params }: { params: { id: number } }) => {
-    const [id, setId] = useState<number | null>(null);
+const PersonalPage = ({ params }: { params: Promise<{ id: string }> }) => {
+    const [id, setId] = useState<string | null>(null);
     const [results, setResults] = useState<Result[] | []>([]);
     const [result, setResult] = useState<Result | null>(null);
 
-    (async () => {
-        const id = await params.id;
-        setId(id);
-        console.log("id:" + id);
-    })();
+    useEffect(() => {
+        params.then((resolvedParams) => {
+            setId(resolvedParams.id);
+            console.log("id:" + resolvedParams.id);
+        });
+    }, [params]);
 
     useEffect(() => {
-        console.log("setId:" + id);
-        const fetchResults = (): void => {
-            fetch("/results.json")
-                // fetch("/results.json")
-                .then((res) => res.json())
-                .then((res) => res.users)
-                .then((res) => {
-                    console.log("res:" + res);
-                    setResults(res);
-                });
-        };
-        fetchResults();
+        if (id) {
+            console.log("setId:" + id);
+            const fetchResults = (): void => {
+                fetch("/results.json")
+                    .then((res) => res.json())
+                    .then((res) => res.users)
+                    .then((res) => {
+                        console.log("res:" + res);
+                        setResults(res);
+                    });
+            };
+            fetchResults();
+        }
     }, [id]);
 
     useEffect(() => {
