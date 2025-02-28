@@ -5,12 +5,8 @@ import React, { useEffect } from "react";
 import { Factor, Result } from "@/types/type_results";
 
 const ResultPage = () => {
-    const [results, setResults] = React.useState<{
-        Results: Result[];
-    } | null>(null);
-    const [factors, setFactors] = React.useState<{
-        Factors: Factor[];
-    } | null>(null);
+    const [results, setResults] = React.useState<Result[] | null>([]);
+    const [factors, setFactors] = React.useState<Factor[] | null>([]);
 
     useEffect(() => {
         const fetchResults = (): void => {
@@ -43,6 +39,7 @@ const ResultPage = () => {
                             <th className="border border-gray-300 p-4 bg-gray-100 text-center">
                                 トータルスコア
                             </th>
+
                             {factors?.map((factor: Factor) => (
                                 <th
                                     key={factor.id}
@@ -57,7 +54,10 @@ const ResultPage = () => {
                     </thead>
                     <tbody>
                         {results
-                            ?.sort((a, b) => b.total_score - a.total_score)
+                            ?.sort(
+                                (a: Result, b: Result) =>
+                                    b.total_score - a.total_score
+                            )
                             .map((result: Result, index: number) => (
                                 <tr
                                     key={result.id}
@@ -71,7 +71,7 @@ const ResultPage = () => {
                                     } hover:bg-red-200`}>
                                     <td className="border border-gray-300 p-4 text-center">
                                         <Link
-                                            href={`/company/scores/${result.id}`}
+                                            href={`/company/personal/${result.id}`}
                                             className="text-blue-500 hover:underline font-semibold">
                                             {result.name}
                                         </Link>
