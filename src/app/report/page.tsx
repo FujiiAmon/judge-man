@@ -11,6 +11,7 @@ const ResultPage = () => {
     useEffect(() => {
         const fetchResults = (): void => {
             fetch("http://localhost:3000/api/results")
+                // fetch("/results.json")
                 .then((res) => res.json())
                 .then((res) => res.users)
                 .then((res) => setResults(res));

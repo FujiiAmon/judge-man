@@ -4,17 +4,17 @@ import { FormDataProps } from "@/types/type_form";
 import React, { useState } from "react";
 
 const InputUrlArea: React.FC<FormDataProps> = (FormData) => {
-    const [name, setName] = useState("");
+    const [url, setUrl] = useState("");
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         FormData.FormData.append("url", e.target.value);
-        setName(e.target.value);
+        setUrl(e.target.value);
     };
 
     return (
         <div className="flex flex-col items-center justify-center p-4">
             <input
                 type="text"
-                value={name}
+                value={url}
                 placeholder="ポートフォリオのurlがある場合は入力してください"
                 onChange={(e) => {
                     onChange(e);

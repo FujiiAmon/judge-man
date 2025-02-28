@@ -15,6 +15,14 @@ const SubmitForm = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
+            console.log("クライアント側デバック");
+            console.log("バックエンド側デバック");
+            const names = formData.getAll("name");
+            console.log(names[names.length - 1]);
+            console.log(formData.get("file"));
+            const urls = formData.getAll("url");
+            console.log(urls[urls.length - 1]);
+            console.log(formData.get("url"));
             const response = await fetch("http://localhost:3000/api/entry", {
                 method: "POST",
                 body: formData,

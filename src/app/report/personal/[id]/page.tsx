@@ -18,6 +18,7 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
         console.log("setId:" + id);
         const fetchResults = (): void => {
             fetch("http://localhost:3000/api/results")
+                // fetch("/results.json")
                 .then((res) => res.json())
                 .then((res) => res.users)
                 .then((res) => {
@@ -44,47 +45,54 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
     const { name, log, pdf_url, urls, total_score, scores } = result || {};
 
     return (
-        <><div className="p-8 bg-white shadow-md rounded-lg">
-            <h1 className="text-2xl font-bold mb-4 text-gray-800">
-                個人分析レポート
-            </h1>
-            <div className="mb-4">
-                <p className="text-lg font-semibold text-gray-700">
-                    氏名: {name}
-                </p>
-                <p className="text-lg font-semibold text-gray-700">
-                    トータルスコア: {total_score}
-                </p>
+        <>
+            <div className="p-8 bg-white shadow-md rounded-lg">
+                <h1 className="text-2xl font-bold mb-4 text-gray-800">
+                    個人分析レポート
+                </h1>
+                <div className="mb-4">
+                    <p className="text-lg font-semibold text-gray-700">
+                        氏名: {name}
+                    </p>
+                    <p className="text-lg font-semibold text-gray-700">
+                        トータルスコア: {total_score}
+                    </p>
+                </div>
+                <div className="mb-4">
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                        スコア詳細
+                    </h2>
+                    {scores?.map((score) => (
+                        <div
+                            key={score.factor_id}
+                            className="mb-2 p-4 border rounded-lg bg-gray-50">
+                            <p className="font-semibold text-gray-700">
+                                {score.factor_name}
+                            </p>
+                            <p className="text-gray-600">
+                                スコア: {score.score}
+                            </p>
+                            <p className="text-gray-600">
+                                理由: {score.reason}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <div className="mb-4"></div>
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                        PDF
+                    </h2>
+                    {pdf_url && (
+                        <iframe
+                            src={pdf_url}
+                            width="100%"
+                            height="600px"
+                            className="border rounded-lg"></iframe>
+                    )}
+                </div>
             </div>
             <div className="mb-4">
-                <h2 className="text-xl font-semibold mb-2 text-gray-800">
-                    スコア詳細
-                </h2>
-                {scores?.map((score) => (
-                    <div
-                        key={score.factor_id}
-                        className="mb-2 p-4 border rounded-lg bg-gray-50">
-                        <p className="font-semibold text-gray-700">
-                            {score.factor_name}
-                        </p>
-                        <p className="text-gray-600">スコア: {score.score}</p>
-                        <p className="text-gray-600">理由: {score.reason}</p>
-                    </div>
-                ))}
-            </div>
-            <div>
-                <div className="mb-4"></div>
-                <h2 className="text-xl font-semibold mb-2 text-gray-800">PDF</h2>
-                {pdf_url && (
-                    <iframe
-                        src={pdf_url}
-                        width="100%"
-                        height="600px"
-                        className="border rounded-lg"
-                    ></iframe>
-                )}
-            </div>
-        </div><div className="mb-4">
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">
                     ログ
                 </h2>
@@ -105,8 +113,8 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
                         )}
                     </React.Fragment>
                 ))}
-            </div></>
-        </div>
+            </div>
+        </>
     );
 };
 
