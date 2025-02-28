@@ -11,7 +11,7 @@ const InputNameArea: React.FC<FormDataProps> = (FormData) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-4">
+        <>
             <input
                 type="text"
                 value={name}
@@ -19,9 +19,9 @@ const InputNameArea: React.FC<FormDataProps> = (FormData) => {
                 onChange={(e) => {
                     onChange(e);
                 }}
-                className="border border-gray-300 rounded-md p-2 w-full max-w-md"
+                className=" w-full flex flex-col items-center justify-center p-4 border border-gray-300 rounded-md  hover:bg-gray-100"
             />
-        </div>
+        </>
     );
 };
 

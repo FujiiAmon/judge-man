@@ -38,20 +38,24 @@ const SubmitForm = () => {
 
     return (
         <>
-            <form
-                action="#"
-                className="max-w-lg mx-auto p-4 bg-white shadow-md rounded"
-                onSubmit={onSubmitHandler}>
-                <InputNameArea FormData={formData} />
-                <InputFileArea FormData={formData} />
-                <InputUrlArea FormData={formData} />
-                <button
-                    type="submit"
-                    className="mt-4 w-full px-4 py-2 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 transition-colors duration-300"
-                    disabled={isLoading}>
-                    {isLoading ? "送信中..." : "提出する"}
-                </button>
-            </form>
+            <div className="p-8 flex flex-col items-center justify-center">
+                <form
+                    action="#"
+                    className="w-full m-auto p-4 bg-white shadow-md rounded"
+                    onSubmit={onSubmitHandler}>
+                    <div className="grid grid-cols-1 gap-4">
+                        <InputNameArea FormData={formData} />
+                        <InputFileArea FormData={formData} />
+                        <InputUrlArea FormData={formData} />
+                    </div>
+                    <button
+                        type="submit"
+                        className="mt-4 w-full px-4 py-2 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 transition-colors duration-300"
+                        disabled={isLoading}>
+                        {isLoading ? "送信中..." : "提出する"}
+                    </button>
+                </form>
+            </div>
         </>
     );
 };
