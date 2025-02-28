@@ -9,7 +9,7 @@ import InputFileArea from "./InputFileArea";
 const SubmitForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const formData = new FormData();
-    const apiUrl = "http://localhost:3000/api/entry";
+    const apiUrl = process.env.NEXT_PUBLIC_API_HANDLE_URL + "/entry";
     const router = useRouter();
 
     const onSubmitHandler = async (e: React.FormEvent) => {
@@ -17,7 +17,7 @@ const SubmitForm = () => {
         setIsLoading(true);
         console.log("submit");
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch("http://localhost:3000/api/entry", {
                 method: "POST",
                 body: formData,
             });

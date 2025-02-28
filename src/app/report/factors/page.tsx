@@ -9,17 +9,17 @@ const ParamPage = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await fetch(`http://localhost:3000/api/company`);
+                const res = await fetch("http://localhost:3000/api/factors");
                 const data = await res.json();
                 setFactors(data);
+                console.log("status:" + res.status);
                 console.log("factors:" + data);
             } catch (e) {
                 console.error(e);
             }
         }
         fetchData();
-        console.log("factors:", factors);
-    });
+    }, []);
 
     const handleChange = (
         id: number,
@@ -35,7 +35,7 @@ const ParamPage = () => {
 
     const handleUpdate = async (id: number) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/company`, {
+            const res = await fetch(`http://localhost:3000/api/factors`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

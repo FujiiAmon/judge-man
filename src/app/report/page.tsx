@@ -10,7 +10,7 @@ const ResultPage = () => {
 
     useEffect(() => {
         const fetchResults = (): void => {
-            fetch("/results.json")
+            fetch("http://localhost:3000/api/results")
                 .then((res) => res.json())
                 .then((res) => res.users)
                 .then((res) => setResults(res));
@@ -18,7 +18,7 @@ const ResultPage = () => {
         fetchResults();
 
         const fetchFactors = (): void => {
-            fetch("/factors.json")
+            fetch("http://localhost:3000/api/factors")
                 .then((res) => res.json())
                 .then((res) => setFactors(res));
         };

@@ -4,38 +4,41 @@ import { Result } from "@/types/type_results";
 import React, { useEffect, useState } from "react";
 
 const PersonalPage = ({ params }: { params: { id: number } }) => {
-    const id = params.id;
+    const [id, setId] = useState<number | null>(null);
     const [results, setResults] = useState<Result[] | []>([]);
     const [result, setResult] = useState<Result | null>(null);
 
-    const filterResults = (res: Result[]) => {
-        console.log(id);
-        res.forEach((r) => {
-            console.log(r);
-            if (r.id == Number(id)) {
-                setResult(r);
-            }
-        });
-    };
+    (async () => {
+        const id = await params.id;
+        setId(id);
+        console.log("id:" + id);
+    })();
 
     useEffect(() => {
+        console.log("setId:" + id);
         const fetchResults = (): void => {
-            fetch("/results.json")
+            fetch("http://localhost:3000/api/results")
                 .then((res) => res.json())
                 .then((res) => res.users)
                 .then((res) => {
-                    console.log(res);
+                    console.log("res:" + res);
                     setResults(res);
                 });
         };
         fetchResults();
     }, [id]);
 
+    const filterResults = (res: Result[]) => {
+        console.log(id);
+        res.forEach((r) => {
+            if (r.id == Number(id)) {
+                setResult(r);
+            }
+        });
+    };
     useEffect(() => {
-        console.log(results);
-        if (results.length > 0) {
-            filterResults(results);
-        }
+        console.log("results:" + results);
+        filterResults(results);
     }, [results]);
 
     const { name, log, pdf_url, urls, total_score, scores } = result || {};
