@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "New Factor",
+        "content": "This is the content",
+        "weight": 10.5
+    },
+    {
+        "id": 2,
+        "title": "学歴",
+        "content": "高学歴かどうか",
+        "weight": 0.2
+    },
+    {
+        "id": 3,
+        "title": "職歴",
+        "content": "すぐに退職しないか",
+        "weight": 0.1
+    },
+    {
+        "id": 4,
+        "title": "性格",
+        "content": "優しそうか",
+        "weight": 0.2
+    },
+    {
+        "id": 5,
+        "title": "スキル",
+        "content": "専門性の高さ",
+        "weight": 0.2
+    }
+]

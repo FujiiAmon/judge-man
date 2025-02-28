@@ -1,4 +1,4 @@
-export interface Data {
+export interface Result {
     id: number;
     name: string;
     log: string;
