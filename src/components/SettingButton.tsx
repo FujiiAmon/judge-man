@@ -3,7 +3,7 @@ import React from "react";
 
 const SettingButton = () => {
     return (
-        <Link href="/company/params">
+        <Link href="/report/factors">
             <link
                 href="https://fonts.googleapis.com/icon?family=Material+Icons"
                 rel="stylesheet"

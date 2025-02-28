@@ -18,7 +18,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         const data = await response.json();
         const pdfUrl = `${baseUrl}${data.pdf_url}`;
 
-        console.log(pdfUrl);
+        console.log("status:" + response.status);
+        console.log("pdfUrl" + pdfUrl);
         return NextResponse.json({ pdfUrl });
     } catch (err) {
         console.log(err);

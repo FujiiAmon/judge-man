@@ -1,26 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Factor } from "@/types/type_company";
-import { useRouter } from "next/navigation";
+import { Factor } from "@/types/type_results";
 
 const ParamPage = () => {
     const [factors, setFactors] = useState<Factor[]>([]);
-    const router = useRouter();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await fetch(`http://localhost:3000/api/company`);
+                const res = await fetch("http://localhost:3000/api/factors");
                 const data = await res.json();
                 setFactors(data);
-                console.log(data);
+                console.log("status:" + res.status);
+                console.log("factors:" + data);
             } catch (e) {
                 console.error(e);
             }
         }
         fetchData();
-        // console.log("factors:", factors);
     }, []);
 
     const handleChange = (
@@ -35,17 +33,16 @@ const ParamPage = () => {
         );
     };
 
-    const hangleUpdate = async () => {
+    const handleUpdate = async (id: number) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/company`, {
+            const res = await fetch(`http://localhost:3000/api/factors`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(factors),
+                body: JSON.stringify(factors[id - 1]),
             });
-            const data = await res.json();
-            console.log(data);
+            console.log(res.status);
         } catch (e) {
             console.error(e);
         }
@@ -101,24 +98,18 @@ const ParamPage = () => {
                             className="mt-1 block w-full"
                         />
                     </label>
+                    <div className="flex justify-end">
+                        <button
+                            onClick={() => {
+                                console.log(factor.id);
+                                handleUpdate(factor.id);
+                            }}
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md">
+                            更新する
+                        </button>
+                    </div>
                 </div>
             ))}
-            <div className="flex space-x-4 mt-4">
-                <button
-                    onClick={() => {
-                        hangleUpdate();
-                    }}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md">
-                    更新する
-                </button>
-                <button
-                    onClick={() => {
-                        router.push("/company");
-                    }}
-                    className="px-4 py-2 bg-gray-500 text-white rounded-md">
-                    戻る
-                </button>
-            </div>
         </>
     );
 };
