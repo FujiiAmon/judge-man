@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "title": "New Factor",
-        "content": "This is the content",
-        "weight": 10.5
+        "title": "社交性",
+        "content": "他者と円滑にコミュニケーションを取れるか",
+        "weight": 0.3
     },
     {
         "id": 2,

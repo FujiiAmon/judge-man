@@ -11,13 +11,19 @@ const InputFileArea: React.FC<FormDataProps> = ({ FormData }) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-md">
-            <input
-                type="file"
-                accept="application/pdf"
-                onChange={handleFileChange}
-                className="mb-4 p-2 border border-gray-300 rounded-md"
-            />
+        <>
+            <label
+                htmlFor="input_file"
+                className=" w-full flex flex-col items-center justify-center p-4 border border-gray-300 rounded-md  hover:bg-gray-100">
+                <span className="text-gray-700 ">ファイルを選択</span>
+                <input
+                    id="input_file"
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                    className="hidden"
+                />
+            </label>
             {FormData.get("file") && (
                 <div>
                     <div className="w-full h-64 flex items-center justify-center">
@@ -35,7 +41,7 @@ const InputFileArea: React.FC<FormDataProps> = ({ FormData }) => {
                     </object>
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
