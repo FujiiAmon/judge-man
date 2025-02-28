@@ -13,7 +13,7 @@ export async function GET(): Promise<Response> {
 
 export async function POST(req: NextRequest): Promise<Response> {
     const body = await req.json();
-    // console.log("body:", body[0]);
+    console.log("body:", body);
     const baseUrl = process.env.API_BASE_URL;
     const upsertUrl = `${baseUrl}/upsert_factor`;
     const upsertRes = await fetch(upsertUrl, {
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(body[0]),
+        body: JSON.stringify(body),
     });
 
     if (!upsertRes.ok) {

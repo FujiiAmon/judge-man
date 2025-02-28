@@ -71,7 +71,7 @@ const ResultPage = () => {
                                     } hover:bg-red-200`}>
                                     <td className="border border-gray-300 p-4 text-center">
                                         <Link
-                                            href={`/company/personal/${result.id}`}
+                                            href={`/report/personal/${result.id}`}
                                             className="text-blue-500 hover:underline font-semibold">
                                             {result.name}
                                         </Link>
@@ -87,8 +87,7 @@ const ResultPage = () => {
                                         </td>
                                     ))}
                                     <td className="border border-gray-300 p-4 text-center">
-                                        <Link
-                                            href={`/company/scores/${result.id}`}>
+                                        <Link href={`/report/submit`}>
                                             <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                                                 再評価
                                             </button>

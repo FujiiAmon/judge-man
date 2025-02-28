@@ -1,7 +1,7 @@
 import SettingButton from "@/components/SettingButton";
 import React from "react";
 
-export default function CompanyLayout({
+export default function ReportLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
     return (
