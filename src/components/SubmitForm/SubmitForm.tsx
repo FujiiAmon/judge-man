@@ -9,13 +9,11 @@ import InputFileArea from "./InputFileArea";
 const SubmitForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const formData = new FormData();
-    const apiUrl = process.env.NEXT_PUBLIC_API_HANDLE_URL + "/entry";
     const router = useRouter();
 
     const onSubmitHandler = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        console.log("submit");
         try {
             const response = await fetch("http://localhost:3000/api/entry", {
                 method: "POST",

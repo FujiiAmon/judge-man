@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const InputUrlArea: React.FC<FormDataProps> = (FormData) => {
     const [name, setName] = useState("");
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        FormData.FormData.append("name", e.target.value);
+        FormData.FormData.append("url", e.target.value);
         setName(e.target.value);
     };
 

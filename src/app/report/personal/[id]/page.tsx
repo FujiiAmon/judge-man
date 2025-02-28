@@ -44,7 +44,7 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
     const { name, log, pdf_url, urls, total_score, scores } = result || {};
 
     return (
-        <div className="p-8 bg-white shadow-md rounded-lg">
+        <><div className="p-8 bg-white shadow-md rounded-lg">
             <h1 className="text-2xl font-bold mb-4 text-gray-800">
                 個人分析レポート
             </h1>
@@ -72,7 +72,19 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
                     </div>
                 ))}
             </div>
-            <div className="mb-4">
+            <div>
+                <div className="mb-4"></div>
+                <h2 className="text-xl font-semibold mb-2 text-gray-800">PDF</h2>
+                {pdf_url && (
+                    <iframe
+                        src={pdf_url}
+                        width="100%"
+                        height="600px"
+                        className="border rounded-lg"
+                    ></iframe>
+                )}
+            </div>
+        </div><div className="mb-4">
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">
                     ログ
                 </h2>
@@ -93,7 +105,7 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
                         )}
                     </React.Fragment>
                 ))}
-            </div>
+            </div></>
         </div>
     );
 };
