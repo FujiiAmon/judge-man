@@ -17,7 +17,7 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
     useEffect(() => {
         console.log("setId:" + id);
         const fetchResults = (): void => {
-            fetch("http://localhost:3000/api/results")
+            fetch("/results.json")
                 // fetch("/results.json")
                 .then((res) => res.json())
                 .then((res) => res.users)
@@ -29,15 +29,15 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
         fetchResults();
     }, [id]);
 
-    const filterResults = (res: Result[]) => {
-        console.log(id);
-        res.forEach((r) => {
-            if (r.id == Number(id)) {
-                setResult(r);
-            }
-        });
-    };
     useEffect(() => {
+        const filterResults = (res: Result[]) => {
+            console.log(id);
+            res.forEach((r) => {
+                if (r.id == Number(id)) {
+                    setResult(r);
+                }
+            });
+        };
         console.log("results:" + results);
         filterResults(results);
     }, [results]);
@@ -46,11 +46,11 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
 
     return (
         <>
-            <div className="p-8 bg-white shadow-md rounded-lg">
+            <div className="m-4 p-8 bg-white shadow-md rounded-lg">
                 <h1 className="text-2xl font-bold mb-4 text-gray-800">
                     個人分析レポート
                 </h1>
-                <div className="mb-4">
+                <div className="flex justify-around mb-4">
                     <p className="text-lg font-semibold text-gray-700">
                         氏名: {name}
                     </p>
@@ -78,21 +78,8 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
                         </div>
                     ))}
                 </div>
-                <div>
-                    <div className="mb-4"></div>
-                    <h2 className="text-xl font-semibold mb-2 text-gray-800">
-                        PDF
-                    </h2>
-                    {pdf_url && (
-                        <iframe
-                            src={pdf_url}
-                            width="100%"
-                            height="600px"
-                            className="border rounded-lg"></iframe>
-                    )}
-                </div>
             </div>
-            <div className="mb-4">
+            <div className="m-4 p-8 bg-white shadow-md rounded-lg">
                 <h2 className="text-xl font-semibold mb-2 text-gray-800">
                     ログ
                 </h2>
@@ -113,6 +100,33 @@ const PersonalPage = ({ params }: { params: { id: number } }) => {
                         )}
                     </React.Fragment>
                 ))}
+            </div>
+            <div className="m-4 p-8 bg-white shadow-md rounded-lg">
+                <div>
+                    <div className="mb-4"></div>
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                        履歴書
+                    </h2>
+                    {pdf_url && (
+                        <iframe
+                            src={pdf_url}
+                            width="100%"
+                            height="600px"
+                            className="border rounded-lg"></iframe>
+                    )}
+                    <div className="mb-4"></div>
+                    <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                        ポートフォリオ
+                    </h2>
+
+                    <a
+                        href={urls}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-500 hover:underline">
+                        {urls}
+                    </a>
+                </div>
             </div>
         </>
     );

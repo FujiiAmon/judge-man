@@ -9,7 +9,7 @@ export default function Home() {
                 />
                 <div className="flex gap-4 p-4">
                     <Link
-                        href="/report"
+                        href="/results"
                         className="w-60 h-32 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center text-center transition-transform transform hover:scale-105 p-4">
                         <span className="material-icons mr-2">business</span>
                         企業様はこちら
