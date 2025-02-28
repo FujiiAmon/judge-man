@@ -16,84 +16,47 @@ const ScorePage = () => {
     return (
         <>
             <div className="p-5 font-sans">
-                <table className="w-full border-collapse rounded-lg overflow-hidden shadow-lg">
+                <h1 className="text-center text-gray-800">Score Page</h1>
+                <table className="w-full border-collapse">
                     <thead>
                         <tr>
-                            <th className="border border-gray-300 p-2 bg-gray-200 rounded-tl-lg">
+                            <th className="border border-gray-300 p-2 bg-gray-200">
                                 User
                             </th>
                             {factors.map((factor) => (
                                 <th
                                     key={factor.id}
-                                    className={`border border-gray-300 p-2 bg-gray-200`}>
+                                    className="border border-gray-300 p-2 bg-gray-200">
                                     {factor.name}
                                 </th>
                             ))}
-                            <th className="border border-gray-300 p-2 bg-gray-200">
-                                total
-                            </th>
-                            <th className="border border-gray-300 p-2 bg-gray-200">
-                                評価
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {users
-                            .map((user) => {
-                                const totalScore = scores
-                                    .filter((s) => s.user_id === user.id)
-                                    .reduce((acc, curr) => acc + curr.score, 0);
-                                return { ...user, totalScore };
-                            })
-                            .sort((a, b) => b.totalScore - a.totalScore)
-                            .map((user, userIndex) => (
-                                <tr
-                                    key={user.id}
-                                    className={`
-                                        ${
-                                            userIndex % 2 === 0
-                                                ? "bg-gray-100"
-                                                : ""
-                                        }
-                                        ${
-                                            userIndex >=
-                                            Math.floor(
-                                                users.length * (passLine / 100)
-                                            )
-                                                ? "bg-red-100"
-                                                : ""
-                                        }
-                                        `}>
-                                    <td className="border-l border-r border-gray-300 p-2 text-center">
-                                        <Link
-                                            className="text-blue-500"
-                                            href={`company/scores/${user.id}`}>
-                                            {user.name}
-                                        </Link>
-                                    </td>
-                                    {factors.map((factor) => {
-                                        const score =
-                                            scores.find(
-                                                (s) =>
-                                                    s.user_id === user.id &&
-                                                    s.factor_id === factor.id
-                                            )?.score ?? 0;
-                                        return (
-                                            <td
-                                                key={factor.id}
-                                                className={`border-l border-r border-gray-300 p-2 text-center`}>
-                                                {score}
-                                            </td>
-                                        );
-                                    })}
-                                    <td className="border-l border-r border-gray-300 p-2 text-center">
-                                        {user.totalScore}
-                                    </td>
-                                    <td className="border-l border-r border-gray-300 p-2 text-center">
-                                        <input type="checkbox" checked={true} />
-                                    </td>
-                                </tr>
-                            ))}
+                        {users.map((user) => (
+                            <tr key={user.id}>
+                                <td className="border border-gray-300 p-2 text-center">
+                                    <Link href={`company/scores/${user.id}`}>
+                                        {user.name}
+                                    </Link>
+                                </td>
+                                {factors.map((factor) => {
+                                    const score =
+                                        scores.find(
+                                            (s) =>
+                                                s.user_id === user.id &&
+                                                s.factor_id === factor.id
+                                        )?.score ?? 0;
+                                    return (
+                                        <td
+                                            key={factor.id}
+                                            className="border border-gray-300 p-2 text-center">
+                                            {score}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

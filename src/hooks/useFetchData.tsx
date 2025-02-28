@@ -1,13 +1,14 @@
 "use client";
 
+import { Data } from "@/types/type_results";
 import { useEffect, useState } from "react";
-import { Data } from "@/types/type_entry";
 
 const useFetchData = () => {
-    const [data, setData] = useState<Data | null>(null);
+    const [data, setData] = useState<Data[] | null>(null);
     useEffect(() => {
-        fetch("/data.json")
-            .then((response) => response.json())
+        fetch("http://localhost:3000/api/company/results")
+            .then((res) => res.json())
+            .then((res) => res.users)
             .then((data) => setData(data));
     }, []);
     return { data };

@@ -2,117 +2,84 @@
     "users": [
         {
             "id": 1,
-            "name": "A"
+            "name": "ああ",
+            "log": "",
+            "pdf_url": "/pdfs/1.pdf",
+            "urls": "",
+            "total_score": 15.5,
+            "scores": [
+                {
+                    "factor_id": 1,
+                    "factor_name": "New Factor",
+                    "factor_weight": 10.5,
+                    "score": 3.5,
+                    "reason": "Some reason"
+                },
+                {
+                    "factor_id": 2,
+                    "factor_name": "学歴",
+                    "factor_weight": 0.2,
+                    "score": 4,
+                    "reason": "Another reason"
+                },
+                {
+                    "factor_id": 3,
+                    "factor_name": "職歴",
+                    "factor_weight": 0.1,
+                    "score": 2,
+                    "reason": "Some other reason"
+                },
+                {
+                    "factor_id": 4,
+                    "factor_name": "性格",
+                    "factor_weight": 0.2,
+                    "score": 5,
+                    "reason": "Perfect score"
+                },
+                {
+                    "factor_id": 5,
+                    "factor_name": "スキル",
+                    "factor_weight": 0.2,
+                    "score": 1,
+                    "reason": "Worst score"
+                }
+            ]
         },
         {
             "id": 2,
-            "name": "B"
+            "name": "a",
+            "log": "",
+            "pdf_url": "/pdfs/2.pdf",
+            "urls": "",
+            "total_score": 0,
+            "scores": []
         },
         {
             "id": 3,
-            "name": "C"
+            "name": "aa",
+            "log": "",
+            "pdf_url": "/pdfs/3.pdf",
+            "urls": "",
+            "total_score": 0,
+            "scores": []
         },
         {
             "id": 4,
-            "name": "D"
+            "name": "aaa",
+            "log": "",
+            "pdf_url": "/pdfs/4.pdf",
+            "urls": "",
+            "total_score": 0,
+            "scores": []
         },
         {
             "id": 5,
-            "name": "E"
-        }
-    ],
-    "factors": [
-        {
-            "id": 1,
-            "name": "Factor 1",
-            "weight": 0.5
-        },
-        {
-            "id": 2,
-            "name": "Factor 2",
-            "weight": 0.5
-        },
-        {
-            "id": 3,
-            "name": "Factor 3",
-            "weight": 0.5
-        }
-    ],
-    "scores": [
-        {
-            "user_id": 1,
-            "factor_id": 1,
-            "score": 10
-        },
-        {
-            "user_id": 1,
-            "factor_id": 2,
-            "score": 20
-        },
-        {
-            "user_id": 1,
-            "factor_id": 3,
-            "score": 30
-        },
-        {
-            "user_id": 2,
-            "factor_id": 1,
-            "score": 40
-        },
-        {
-            "user_id": 2,
-            "factor_id": 2,
-            "score": 50
-        },
-        {
-            "user_id": 2,
-            "factor_id": 3,
-            "score": 60
-        },
-        {
-            "user_id": 3,
-            "factor_id": 1,
-            "score": 70
-        },
-        {
-            "user_id": 3,
-            "factor_id": 2,
-            "score": 80
-        },
-        {
-            "user_id": 3,
-            "factor_id": 3,
-            "score": 90
-        },
-        {
-            "user_id": 4,
-            "factor_id": 1,
-            "score": 100
-        },
-        {
-            "user_id": 4,
-            "factor_id": 2,
-            "score": 110
-        },
-        {
-            "user_id": 4,
-            "factor_id": 3,
-            "score": 120
-        },
-        {
-            "user_id": 5,
-            "factor_id": 1,
-            "score": 130
-        },
-        {
-            "user_id": 5,
-            "factor_id": 2,
-            "score": 140
-        },
-        {
-            "user_id": 5,
-            "factor_id": 3,
-            "score": 150
+            "name": "sdngoi",
+            "log": "",
+            "pdf_url": "/pdfs/5.pdf",
+            "urls": "",
+            "total_score": 0,
+            "scores": []
         }
     ]
 }

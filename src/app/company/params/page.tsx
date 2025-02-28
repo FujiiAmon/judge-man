@@ -14,13 +14,13 @@ const ParamPage = () => {
                 const res = await fetch(`http://localhost:3000/api/company`);
                 const data = await res.json();
                 setFactors(data);
-                console.log(data);
+                console.log("factors:" + data);
             } catch (e) {
                 console.error(e);
             }
         }
         fetchData();
-        // console.log("factors:", factors);
+        console.log("factors:", factors);
     }, []);
 
     const handleChange = (
@@ -35,7 +35,7 @@ const ParamPage = () => {
         );
     };
 
-    const hangleUpdate = async () => {
+    const handleUpdate = async () => {
         try {
             const res = await fetch(`http://localhost:3000/api/company`, {
                 method: "POST",
@@ -106,7 +106,7 @@ const ParamPage = () => {
             <div className="flex space-x-4 mt-4">
                 <button
                     onClick={() => {
-                        hangleUpdate();
+                        handleUpdate();
                     }}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md">
                     更新する
