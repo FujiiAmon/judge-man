@@ -9,7 +9,7 @@ import InputFileArea from "./InputFileArea";
 const SubmitForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const formData = new FormData();
-    const apiUrl = "http://localhost:3000/api/up_user";
+    const apiUrl = "http://localhost:3000/api/entry";
     const router = useRouter();
 
     const onSubmitHandler = async (e: React.FormEvent) => {

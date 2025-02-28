@@ -1,0 +1,34 @@
+import { NextRequest } from "next/server";
+
+export async function GET(): Promise<Response> {
+    const baseUrl = process.env.API_BASE_URL;
+    const getUrl = `${baseUrl}/get_all_factors`;
+    const res = await fetch(getUrl);
+    const data = await res.json();
+    console.log(data);
+
+    return new Response(JSON.stringify(data), { status: 200 });
+}
+
+export async function POST(req: NextRequest): Promise<Response> {
+    const body = await req.json();
+    const baseUrl = process.env.API_BASE_URL;
+    const upsertUrl = `${baseUrl}/upsert_factor`;
+    const upsertRes = await fetch(upsertUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+    });
+
+    if (!upsertRes.ok) {
+        const errorData = await upsertRes.json();
+        return new Response(JSON.stringify(errorData), {
+            status: upsertRes.status,
+        });
+    }
+
+    const upsertData = await upsertRes.json();
+    return new Response(JSON.stringify(upsertData), { status: 200 });
+}
